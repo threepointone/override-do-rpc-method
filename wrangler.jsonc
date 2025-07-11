@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cloudflare-worker-typescript-template",
+  "compatibility_date": "2025-06-15",
+  "main": "src/index.ts",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MyDO",
+        "class_name": "MyDO"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["MyDO"]
+    }
+  ]
+}
