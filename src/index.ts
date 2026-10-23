@@ -8,10 +8,10 @@ export class MyDO extends DurableObject {
   constructor(state: DurableObjectState, env: Env) {
     super(state, env);
 
-    const _something = this.something.bind(this);
-    this.something = (message: string) => {
+    const _something = this.constructor.prototype.something;
+    this.constructor.prototype.something = function (message: string) {
       console.log("overriding something");
-      return _something(message);
+      return _something.apply(this, [message]);
     };
   }
   async something(message: string) {
